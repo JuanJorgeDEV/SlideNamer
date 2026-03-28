@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renomeador de Arquivos</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1> Renomeador de Arquivos</h1>
+            <p>Projeto acadêmico/prático para automação e organização de diretórios.</p>
+        </header>
+
+        <main>
+            <section class="form-group">
+                <label for="caminho">1. Diretório Alvo:</label>
+                <div class="input-group">
+                    <input type="text" id="caminho" placeholder="C:\Caminho\Para\Sua\Pasta">
+                    <button class="btn-secundario" id="btn-buscar-pasta">Procurar Pasta</button>
+                </div>
+            </section>
+
+            <section class="form-group extensoes-box">
+                <label>2. Formato (Extensão)</label>
+                <div class="extensoes-desc">
+                    Defina se deseja forçar uma extensão específica ou manter a original.
+                </div>
+                <div class="radio-group">
+                    <label class="radio-item"><input type="radio" name="tipo_ext" value="" checked> Manter
+                        Original</label>
+                    <label class="radio-item"><input type="radio" name="tipo_ext" value=".pdf"> .PDF</label>
+                    <label class="radio-item"><input type="radio" name="tipo_ext" value=".pptx"> .PPTX</label>
+                    <label class="radio-item"><input type="radio" name="tipo_ext" value=".jpg"> .jpg</label>
+                    <label class="radio-item"><input type="radio" name="tipo_ext" value=".png"> .png</label>
+                    <label class="radio-item"><input type="radio" name="tipo_ext" value="custom"> Outro...</label>
+                </div>
+                <div id="extensao_custom_container">
+                    <input type="text" id="extensao_custom" placeholder="Ex: .mp4">
+                </div>
+            </section>
+
+            <section class="form-group">
+                <label for="nomes">3. Padrão de Nomenclatura (Lista Cronológica):</label>
+                <button class="btn-secundario" id="btn-extrair-pptx" style="margin-bottom: 10px; font-size: 0.85em;">
+                     Extrair Títulos de Apresentações (.pptx)
+                </button>
+                <textarea id="nomes" placeholder="Aula 1 - Introdução&#10;Aula 2 - Movimento&#10;Aula 3 - Conclusão..."></textarea>
+            </section>
+
+            <section class="form-group checkbox-group">
+                <input type="checkbox" id="dry_run" checked>
+                <label for="dry_run"><strong>Modo Teste (Dry Run):</strong> Simular sem alterar arquivos físicos no
+                    disco.</label>
+            </section>
+
+            <button class="btn-principal" id="btn-processar">Iniciar Processamento</button>
+        </main>
+
+        <div id="resultado">
+            <h3 id="res-mensagem"></h3>
+            <div class="log-list" id="res-detalhes"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Desenvolvido com 💻 por Juan | Projeto de Automação</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>
