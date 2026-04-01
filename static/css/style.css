@@ -88,3 +88,29 @@ button:active { transform: scale(0.98); }
 
 /* Rodapé */
 footer { text-align: center; margin-top: 30px; font-size: 0.85em; color: #a0aec0; }
+
+/* =========================================
+   V2: Estilos da Funcionalidade de Raio-X
+   ========================================= */
+
+.acoes-extra-group { margin-bottom: 15px; display: flex; gap: 10px; }
+
+.btn-outline { background-color: #edf2f7; color: #2d3748; border: 1px solid #cbd5e0; flex: 1; }
+.btn-outline:hover { background-color: #e2e8f0; }
+
+.raiox-panel { display: none; background: #e2e8f0; padding: 15px; border-radius: 4px; margin-bottom: 15px; border-left: 4px solid #3182ce; }
+.raiox-title { margin-top: 0; font-weight: 600; font-size: 0.9em; color: #2d3748; }
+
+.raiox-options-list { margin-bottom: 15px; font-size: 0.85em; background: #fff; padding: 10px; border-radius: 4px; border: 1px solid #cbd5e0; max-height: 180px; overflow-y: auto; }
+.raiox-file-base { color: #718096; margin-bottom: 10px; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px; }
+
+.raiox-option-item { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; font-weight: normal; cursor: pointer; padding: 5px; border-radius: 3px; transition: background-color 0.2s; }
+.raiox-option-item:hover { background-color: #f7fafc; }
+.raiox-option-item input { margin-top: 3px; }
+.raiox-option-label { color: #3182ce; font-weight: bold; }
+
+.btn-success { background-color: #38a169; padding: 10px; font-size: 0.9em; margin-top: 0; }
+.btn-success:hover { background-color: #2f855a; }
+
+/* Classe ativada via JS para o efeito de "piscar" sucesso */
+.textarea-success { background-color: #c6f6d5 !important; transition: background-color 0.3s ease; }

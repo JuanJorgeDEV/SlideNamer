@@ -121,5 +121,61 @@ def main():
         print(e, file=sys.stderr)
         sys.exit(1)
 
+def mapear_shapes_primeiro_slide(pasta_caminho: str) -> dict | None:
+    arquivos = obter_arquivos_por_data(pasta_caminho)
+    
+    for arquivo in arquivos:
+        if arquivo.suffix.lower() == '.pptx':
+            try:
+                prs = Presentation(arquivo)
+                if not prs.slides: continue
+                
+                primeiro_slide = prs.slides[0]
+                opcoes = {}
+                
+                for i, shape in enumerate(primeiro_slide.shapes):
+                    if shape.has_text_frame and shape.text.strip():
+                        texto_limpo = " ".join(shape.text.splitlines())
+                        # Limita o texto a 50 caracteres para não quebrar a tela
+                        opcoes[str(i)] = texto_limpo[:50] + ("..." if len(texto_limpo) > 50 else "")
+                
+                if opcoes:
+                    return {"arquivo": arquivo.name, "opcoes": opcoes}
+            except Exception as e:
+                print(f"Erro ao mapear {arquivo.name}: {e}")
+                return None
+    return None
+
+def extrair_titulos_por_indices(pasta_caminho: str, indices_alvo: list[int]) -> list[str]:
+    """Extrai o texto de múltiplos índices e os concatena com ' - '."""
+    arquivos = obter_arquivos_por_data(pasta_caminho)
+    lista_titulos = []
+
+    for arquivo in arquivos:
+        if arquivo.suffix.lower() == '.pptx':
+            try:
+                prs = Presentation(arquivo)
+                if prs.slides:
+                    primeiro_slide = prs.slides[0]
+                    partes_titulo = []
+                    
+                    # Procura o texto de cada índice na ordem que o usuário escolheu
+                    for idx in indices_alvo:
+                        if idx < len(primeiro_slide.shapes):
+                            shape = primeiro_slide.shapes[idx]
+                            if shape.has_text_frame and shape.text.strip():
+                                texto = " ".join(shape.text.splitlines())
+                                partes_titulo.append(texto)
+                    
+                    # Junta tudo com um hífen
+                    if partes_titulo:
+                        lista_titulos.append(" - ".join(partes_titulo))
+                    else:
+                        lista_titulos.append(f"Sem_Texto_Nos_Indices_{arquivo.stem}")
+            except Exception as e:
+                lista_titulos.append(f"Erro_Leitura_{arquivo.stem}")
+                
+    return lista_titulos
+
 if __name__ == "__main__":
     main()

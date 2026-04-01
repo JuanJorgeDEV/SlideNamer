@@ -47,9 +47,24 @@
 
             <section class="form-group">
                 <label for="nomes">3. Padrão de Nomenclatura (Lista Cronológica):</label>
-                <button class="btn-secundario" id="btn-extrair-pptx" style="margin-bottom: 10px; font-size: 0.85em;">
-                     Extrair Títulos de Apresentações (.pptx)
-                </button>
+                
+                <div class="acoes-extra-group">
+                    <button class="btn-secundario btn-outline" id="btn-mapear-pptx">
+                         Raio-X de Apresentações (.pptx)
+                    </button>
+                </div>
+
+                <div id="container-raiox" class="raiox-panel">
+                    <p class="raiox-title">
+                        Estrutura encontrada! Qual caixa contém o padrão de títulos?
+                    </p>
+                    <div id="lista-opcoes-raiox" class="raiox-options-list">
+                        </div>
+                    <button class="btn-principal btn-success" id="btn-extrair-indice">
+                        🪄 Extrair Nomes Usando o Padrão Selecionado
+                    </button>
+                </div>
+
                 <textarea id="nomes" placeholder="Aula 1 - Introdução&#10;Aula 2 - Movimento&#10;Aula 3 - Conclusão..."></textarea>
             </section>
 
