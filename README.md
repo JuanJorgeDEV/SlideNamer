@@ -2,7 +2,8 @@
 
 Uma aplicação local em Python + Flask para organizar, renomear arquivos em massa e extrair textos estruturados de apresentações (.pptx) para automação de nomenclatura.
 
-![Interface Principal do Sistema]()
+<img width="676" height="422" alt="V2 Interface" src="https://github.com/user-attachments/assets/85f43902-b35b-40a4-a812-af239e9e6775" />
+
 
 ## 📖 O Problema e o Contexto
 Projeto desenvolvido para resolver uma dor real de professores: o download de dezenas de aulas em PDF, vídeos e slides que vêm com nomes gerados por sistemas (ex: `1422111.pptx`). A renomeação manual além de demorada, frequentemente quebra a ordem cronológica do curso.
